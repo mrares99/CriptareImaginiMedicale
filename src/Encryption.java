@@ -5,14 +5,12 @@ import java.util.Random;
 
 public class Encryption {
 
-    public List<int[][]> generateRandomSequenceForChannels(int seed,int rows,int columns){
+    public List<int[][]> generateRandomSequenceForChannels(long seed,int rows,int columns){
         int[][] redMatrixRandomSequence = new int[columns][rows];
         int[][] greenMatrixRandomSequence = new int[columns][rows];
         int[][] blueMatrixRandomSequence = new int[columns][rows];
-
         Random random=new Random();
         random.setSeed(seed);
-
         for(int i=0;i<columns;i++){
             for(int j=0;j<rows;j++){
                 redMatrixRandomSequence[i][j]=random.nextInt(8);
@@ -27,10 +25,8 @@ public class Encryption {
         return list2d;
     }
 
-    public BufferedImage doEncryption(int seed,int [][] matrix,BufferedImage colorChannel,
-                                         String channel) throws StringException {
-        BufferedImage outputBufferedImage=new BufferedImage(colorChannel.getWidth(),
-                colorChannel.getHeight(),BufferedImage.TYPE_INT_ARGB);
+    public BufferedImage doEncryption(long seed,int [][] matrix,BufferedImage colorChannel, String channel) throws StringException {
+        BufferedImage outputBufferedImage=new BufferedImage(colorChannel.getWidth(), colorChannel.getHeight(),BufferedImage.TYPE_INT_RGB);
         Random random=new Random();
         random.setSeed(seed);
         int d=0;
@@ -46,14 +42,36 @@ public class Encryption {
             d+=random.nextInt(8);
             d+=random.nextInt(8);
         }
-        else throw new StringException("Invalid name for color channel.Only valid:red,green,blue.");
+        else throw new StringException("Invalid name for color channel.The choices are:'red','green' or 'blue'.");
         d=d%8;
         for(int i=0;i<colorChannel.getWidth();i++){
             for(int j=0;j<colorChannel.getHeight();j++){
                 int rgb=colorChannel.getRGB(i,j);
-                int shift=circularRightShift(rgb,d);
-                outputBufferedImage.setRGB(i, j,
-                        circularRightShift(shift, matrix[i][j]));
+                //trebe verificat ce culoare este si apoi convertita la byte si apoi shiftata
+
+                byte byteRGB=0;
+                byte shift=0;
+                if((rgb & 0x00ff0000)!=0){//inseamna ca este culoarea rosie
+                    byteRGB=(byte)(rgb>>16);
+                    shift=circularRightShift(byteRGB,d);
+                    shift=circularRightShift(shift, matrix[i][j]);
+                    rgb=(int)shift<<16;
+                    outputBufferedImage.setRGB(i, j, rgb);
+                }
+                if((rgb & 0x0000ff00)!=0){//inseamna ca este culoarea verde
+                    byteRGB=(byte)(rgb>>8);
+                    shift=circularRightShift(byteRGB,d);
+                    shift=circularRightShift(shift, matrix[i][j]);
+                    rgb=(int)shift<<8;
+                    outputBufferedImage.setRGB(i, j, rgb);
+                }
+                if((rgb & 0x000000ff)!=0){//inseamna ca este culoarea albastra
+                    byteRGB=(byte)rgb;
+                    shift=circularRightShift(byteRGB,d);
+                    shift=circularRightShift(shift, matrix[i][j]);
+                    rgb=(int)shift;
+                    outputBufferedImage.setRGB(i, j, rgb);
+                }
             }
             d++;
         }
@@ -61,8 +79,8 @@ public class Encryption {
         return outputBufferedImage;
     }
 
-    public int circularRightShift(int number,int distance){
-        return Integer.rotateRight(number,distance);
+    public byte circularRightShift(byte number,int distance){
+        return (byte) ((number >> distance) | (number << (8 - distance)));
     }
 
 }

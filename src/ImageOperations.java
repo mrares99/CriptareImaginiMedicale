@@ -28,6 +28,7 @@ public class ImageOperations {
         for(int i=0;i<bufferedImage.getWidth();i++){
             for(int j=0;j<bufferedImage.getHeight();j++){
                 rgb = bufferedImage.getRGB(i,j);
+                //fac operatiile urmatoare pentru a eliminta componenta alfa,deoarece nu vreau sa lucrez cu transparenta.
                 red = rgb >>16 & 0xff;
                 green = rgb>>8 & 0xff;
                 blue = rgb & 0xff;
@@ -40,18 +41,16 @@ public class ImageOperations {
         return bufferedImageList;
     }
 
-    public BufferedImage constructImageFromRGBChannels(BufferedImage redImage,
-                                                       BufferedImage greenImage,
-                                                       BufferedImage blueImage){
-        int width=redImage.getWidth(),height=redImage.getHeight();
-        BufferedImage outputImage=new BufferedImage(width, height,BufferedImage.TYPE_INT_ARGB);
-        int red=0,green=0,blue=0;
+    public BufferedImage constructImageFromRGBChannels(BufferedImage firstImage, BufferedImage secondImage, BufferedImage thirdImage){
+        int width=firstImage.getWidth(),height=firstImage.getHeight();
+        BufferedImage outputImage=new BufferedImage(width, height,BufferedImage.TYPE_INT_RGB);
+        int color1=0,color2=0,color3=0;
         for(int i=0;i<width;i++){
             for(int j=0;j<height;j++){
-                red=redImage.getRGB(i,j);
-                green=greenImage.getRGB(i,j);
-                blue=blueImage.getRGB(i,j);
-                outputImage.setRGB(i,j,red | green | blue);
+                color1=firstImage.getRGB(i,j);
+                color2=secondImage.getRGB(i,j);
+                color3=thirdImage.getRGB(i,j);
+                outputImage.setRGB(i,j,color1 | color2 | color3);
             }
         }
         return outputImage;

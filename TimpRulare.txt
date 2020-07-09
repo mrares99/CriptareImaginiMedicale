@@ -1,0 +1,76 @@
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,06600 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,06200 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,07100 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,06200 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,06300 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,11900 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,12600 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,08400 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,12500 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,11500 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,07800 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,07800 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,08400 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,07900 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,07800 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,08700 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,08900 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,11500 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,11800 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,12700 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,07300 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,08700 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,07900 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,06200 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,16700 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,15900 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,17400 secunde
+Width imagine=500 Height imagine=358
+Timpul total pentru criptare=0,15600 secunde
+Width imagine=555 Height imagine=260
+Timpul total pentru criptare=0,14500 secunde
+Width imagine=555 Height imagine=260
+Timpul total pentru criptare=0,15600 secunde
+Width imagine=555 Height imagine=260
+Timpul total pentru criptare=0,16400 secunde
+Width imagine=555 Height imagine=260
+Timpul total pentru criptare=0,15800 secunde
+Width imagine=555 Height imagine=260
+Timpul total pentru criptare=0,16200 secunde
+Width imagine=555 Height imagine=260
+Timpul total pentru criptare=0,15300 secunde
+Width imagine=555 Height imagine=260
+Timpul total pentru criptare=0,16100 secunde
+Width imagine=555 Height imagine=260
+Timpul total pentru criptare=0,15400 secunde
+Width imagine=555 Height imagine=260
+Timpul total pentru criptare=0,15500 secunde
+Width imagine=555 Height imagine=260
+Timpul total pentru criptare=0,15700 secunde
