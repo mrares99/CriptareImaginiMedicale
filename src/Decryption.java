@@ -31,14 +31,14 @@ public class Decryption {
         random.setSeed(seed);
         int d=0;
         if(channel.equals("red")){
-            d=8-random.nextInt(8);//initial shift
+            d=random.nextInt(8);//initial shift
         }
         else if(channel.equals("green")){
-            d=8-random.nextInt(8);//initial shift
+            d=random.nextInt(8);//initial shift
             d+=random.nextInt(8);
         }
         else if(channel.equals("blue")){
-            d=8-random.nextInt(8);//initial shift
+            d=random.nextInt(8);//initial shift
             d+=random.nextInt(8);
             d+=random.nextInt(8);
         }
@@ -47,29 +47,35 @@ public class Decryption {
         for(int i=0;i<colorChannel.getWidth();i++){
             for(int j=0;j<colorChannel.getHeight();j++){
                 int rgb=colorChannel.getRGB(i,j);
+                rgb=rgb & 0x00ffffff;
                 //trebe verificat ce culoare este si apoi convertita la byte si apoi shiftata
                 byte byteRGB=0;
                 byte shift=0;
+                if(i==0 && j<=30) System.out.println("i="+i+"  j="+j+"  rgb="+rgb+"   d="+d);
                 if((rgb & 0x00ff0000)!=0){//inseamna ca este culoarea rosie
                     byteRGB=(byte)(rgb>>16);
-                    shift=circularRightShift(byteRGB,d);
-                    shift=circularRightShift(shift, matrix[i][j]);
+                    if(i==0 && j<=30) System.out.println(" rosu byteRGB="+byteRGB);
+                    shift=circularLeftShift(byteRGB,d);
+                    if(i==0 && j<=30) System.out.println(" rosu byteRGB="+byteRGB+" byteRGB dupa shift cu 'd'="+shift);
+                    shift=circularLeftShift(shift, matrix[i][j]);
+                    if(i==0 && j<=30) System.out.println(" rosu byteRGB="+byteRGB+" byteRGB dupa shift cu random sequence="+shift+" random sequence="+matrix[i][j]);
                     rgb=(int)shift<<16;
-                    outputBufferedImage.setRGB(i, j, rgb);
+                    if(i==0 && j<=30) System.out.println("i="+i+"  j="+j+"  rgb="+(rgb & 0x00ff0000));
+                    outputBufferedImage.setRGB(i, j, rgb & 0x00ff0000);
                 }
                 if((rgb & 0x0000ff00)!=0){//inseamna ca este culoarea verde
                     byteRGB=(byte)(rgb>>8);
-                    shift=circularRightShift(byteRGB,d);
-                    shift=circularRightShift(shift, matrix[i][j]);
+                    shift=circularLeftShift(byteRGB,d);
+                    shift=circularLeftShift(shift, matrix[i][j]);
                     rgb=(int)shift<<8;
-                    outputBufferedImage.setRGB(i, j, rgb);
+                    outputBufferedImage.setRGB(i, j, rgb & 0x0000ff00);
                 }
                 if((rgb & 0x000000ff)!=0){//inseamna ca este culoarea albastra
                     byteRGB=(byte)rgb;
-                    shift=circularRightShift(byteRGB,d);
-                    shift=circularRightShift(shift, matrix[i][j]);
-                    rgb=(int)shift;
-                    outputBufferedImage.setRGB(i, j, rgb);
+                    shift=circularLeftShift(byteRGB,d);
+                    shift=circularLeftShift(shift, matrix[i][j]);
+                    rgb=shift;
+                    outputBufferedImage.setRGB(i, j, rgb & 0x000000ff);
                 }
             }
             d++;
@@ -79,7 +85,25 @@ public class Decryption {
     }
 
     public byte circularRightShift(byte number,int distance){
-        return (byte) ((number >> distance) | (number << (8 - distance)));
+        int rotation=distance;
+        rotation %= 8;
+        byte num=number;
+        while((rotation--)!=0)
+            num = (byte) ((num >> 1) & (~(1 << 7)) | ((num & 1) << 7));
+
+        return num;
+    }
+
+    public byte circularLeftShift(byte number,int distance){
+        int rotation=distance;
+        rotation %= 8;
+        byte num=number;
+        while((rotation--)!=0)
+            num = (byte) ((num << 1) | (1 & (num >> 7)));
+
+        return num;
+
+        //return (byte) ((number << distance) | (number >> (8 - distance)));
     }
 
 }

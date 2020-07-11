@@ -47,30 +47,38 @@ public class Encryption {
         for(int i=0;i<colorChannel.getWidth();i++){
             for(int j=0;j<colorChannel.getHeight();j++){
                 int rgb=colorChannel.getRGB(i,j);
+                rgb=rgb & 0x00ffffff;
                 //trebe verificat ce culoare este si apoi convertita la byte si apoi shiftata
-
+                //if(i==0 && j<=30) System.out.println("i="+i+"  j="+j+"  rgb="+rgb+"   d="+d);
                 byte byteRGB=0;
                 byte shift=0;
+                //am facut AND cu 0x00ff0000 sa elimin partea alfa,adica transparenta
                 if((rgb & 0x00ff0000)!=0){//inseamna ca este culoarea rosie
                     byteRGB=(byte)(rgb>>16);
+                    //if(i==0 && j<=30) System.out.println(" rosu byteRGB="+byteRGB);
                     shift=circularRightShift(byteRGB,d);
+                    //if(i==0 && j<=30) System.out.println(" rosu byteRGB="+byteRGB+" byteRGB dupa shift cu 'd'="+shift);
                     shift=circularRightShift(shift, matrix[i][j]);
+                    //if(i==0 && j<=30) System.out.println(" rosu byteRGB="+byteRGB+" byteRGB dupa shift cu random sequence="+shift+" random sequence="+matrix[i][j]);
                     rgb=(int)shift<<16;
-                    outputBufferedImage.setRGB(i, j, rgb);
+                    //if(i==0 && j<=30) System.out.println("i="+i+"  j="+j+"  rgb="+(rgb & 0x00ff0000));
+                    outputBufferedImage.setRGB(i, j, rgb & 0x00ff0000);
                 }
                 if((rgb & 0x0000ff00)!=0){//inseamna ca este culoarea verde
                     byteRGB=(byte)(rgb>>8);
+                    //if(i==0 && j<=30) System.out.println(" verde byteRGB="+byteRGB);
                     shift=circularRightShift(byteRGB,d);
                     shift=circularRightShift(shift, matrix[i][j]);
                     rgb=(int)shift<<8;
-                    outputBufferedImage.setRGB(i, j, rgb);
+                    outputBufferedImage.setRGB(i, j, rgb & 0x0000ff00);
                 }
                 if((rgb & 0x000000ff)!=0){//inseamna ca este culoarea albastra
                     byteRGB=(byte)rgb;
+                    //if(i==0 && j<=30) System.out.println(" albastru byteRGB="+byteRGB);
                     shift=circularRightShift(byteRGB,d);
                     shift=circularRightShift(shift, matrix[i][j]);
                     rgb=(int)shift;
-                    outputBufferedImage.setRGB(i, j, rgb);
+                    outputBufferedImage.setRGB(i, j, rgb & 0x000000ff);
                 }
             }
             d++;
@@ -80,7 +88,13 @@ public class Encryption {
     }
 
     public byte circularRightShift(byte number,int distance){
-        return (byte) ((number >> distance) | (number << (8 - distance)));
+        int rotation=distance;
+        rotation %= 8;
+        byte num=number;
+        while((rotation--)!=0)
+            num = (byte) ((num >> 1) & (~(1 << 7)) | ((num & 1) << 7));
+
+        return num;
     }
 
 }

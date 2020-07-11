@@ -29,6 +29,7 @@ public class ImageOperations {
             for(int j=0;j<bufferedImage.getHeight();j++){
                 rgb = bufferedImage.getRGB(i,j);
                 //fac operatiile urmatoare pentru a eliminta componenta alfa,deoarece nu vreau sa lucrez cu transparenta.
+                rgb=rgb & 0x00ffffff;
                 red = rgb >>16 & 0xff;
                 green = rgb>>8 & 0xff;
                 blue = rgb & 0xff;
@@ -50,7 +51,8 @@ public class ImageOperations {
                 color1=firstImage.getRGB(i,j);
                 color2=secondImage.getRGB(i,j);
                 color3=thirdImage.getRGB(i,j);
-                outputImage.setRGB(i,j,color1 | color2 | color3);
+                int rgb=color1 | color2 | color3;
+                outputImage.setRGB(i,j,rgb & 0x00ffffff);
             }
         }
         return outputImage;

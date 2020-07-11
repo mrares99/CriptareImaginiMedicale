@@ -13,6 +13,15 @@ public class ParallelEncryption extends Thread{
     private Encryption encryption;
     private static List<BufferedImage> outputEncryptedImageList;
     private ViewImage viewImage=new ViewImage();
+    private BufferedImage rezultatCriptare;
+
+    public BufferedImage getRezultatCriptare() {
+        return rezultatCriptare;
+    }
+
+    public void setRezultatCriptare(BufferedImage rezultatCriptare) {
+        this.rezultatCriptare = rezultatCriptare;
+    }
 
     public ParallelEncryption(){
         this.thread=new Thread();
@@ -23,7 +32,7 @@ public class ParallelEncryption extends Thread{
     public void run(){
         try{
             BufferedImage outputEncryptedImage=encryption.doEncryption(seedKey,randomSequenceMatrix, colorChannel,stringChannel);
-            //viewImage.displayImage(outputEncryptedImage,"imgErr",outputEncryptedImage.getWidth(),outputEncryptedImage.getHeight());
+            rezultatCriptare=outputEncryptedImage;
             addEncryptedImageInList(outputEncryptedImage);
 
         }catch(Exception e){
