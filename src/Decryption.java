@@ -51,16 +51,11 @@ public class Decryption {
                 //trebe verificat ce culoare este si apoi convertita la byte si apoi shiftata
                 byte byteRGB=0;
                 byte shift=0;
-                if(i==0 && j<=30) System.out.println("i="+i+"  j="+j+"  rgb="+rgb+"   d="+d);
                 if((rgb & 0x00ff0000)!=0){//inseamna ca este culoarea rosie
                     byteRGB=(byte)(rgb>>16);
-                    if(i==0 && j<=30) System.out.println(" rosu byteRGB="+byteRGB);
                     shift=circularLeftShift(byteRGB,d);
-                    if(i==0 && j<=30) System.out.println(" rosu byteRGB="+byteRGB+" byteRGB dupa shift cu 'd'="+shift);
                     shift=circularLeftShift(shift, matrix[i][j]);
-                    if(i==0 && j<=30) System.out.println(" rosu byteRGB="+byteRGB+" byteRGB dupa shift cu random sequence="+shift+" random sequence="+matrix[i][j]);
                     rgb=(int)shift<<16;
-                    if(i==0 && j<=30) System.out.println("i="+i+"  j="+j+"  rgb="+(rgb & 0x00ff0000));
                     outputBufferedImage.setRGB(i, j, rgb & 0x00ff0000);
                 }
                 if((rgb & 0x0000ff00)!=0){//inseamna ca este culoarea verde
@@ -102,8 +97,6 @@ public class Decryption {
             num = (byte) ((num << 1) | (1 & (num >> 7)));
 
         return num;
-
-        //return (byte) ((number << distance) | (number >> (8 - distance)));
     }
 
 }

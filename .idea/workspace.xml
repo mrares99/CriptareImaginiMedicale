@@ -7,10 +7,12 @@
       <change beforePath="$PROJECT_DIR$/out/production/CriptareImaginiMedicale/Decryption.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CriptareImaginiMedicale/Decryption.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CriptareImaginiMedicale/Encryption.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CriptareImaginiMedicale/Encryption.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CriptareImaginiMedicale/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CriptareImaginiMedicale/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CriptareImaginiMedicale/ParallelDecryption.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CriptareImaginiMedicale/ParallelDecryption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CriptareImaginiMedicale/ParallelEncryption.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CriptareImaginiMedicale/ParallelEncryption.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Decryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decryption.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Encryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Encryption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageOperations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ParallelDecryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParallelDecryption.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ParallelEncryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParallelEncryption.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,22 +74,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="213" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1594449118138" />
-    <state width="1877" height="208" key="GridCell.Tab.0.bottom" timestamp="1594483883775">
+    <state width="1877" height="208" key="GridCell.Tab.0.bottom" timestamp="1594729987899">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="208" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594483883775" />
-    <state width="1877" height="208" key="GridCell.Tab.0.center" timestamp="1594483883775">
+    <state width="1877" height="208" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594729987899" />
+    <state width="1877" height="208" key="GridCell.Tab.0.center" timestamp="1594729987899">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="208" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594483883775" />
-    <state width="1877" height="208" key="GridCell.Tab.0.left" timestamp="1594483883775">
+    <state width="1877" height="208" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594729987899" />
+    <state width="1877" height="208" key="GridCell.Tab.0.left" timestamp="1594729987899">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="208" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594483883775" />
-    <state width="1877" height="208" key="GridCell.Tab.0.right" timestamp="1594483883775">
+    <state width="1877" height="208" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594729987899" />
+    <state width="1877" height="208" key="GridCell.Tab.0.right" timestamp="1594729987899">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="208" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594483883775" />
+    <state width="1877" height="208" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594729987899" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1594320196377">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
