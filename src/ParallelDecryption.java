@@ -12,7 +12,6 @@ public class ParallelDecryption extends Thread{
     private String threadName;
     private Decryption decryption;
     private static List<BufferedImage> outputDecryptedImageList;
-    private BufferedImage rezultatDecriptare;
 
     public ParallelDecryption(){
         this.thread=new Thread();
@@ -23,9 +22,7 @@ public class ParallelDecryption extends Thread{
     public void run(){
         try{
             BufferedImage outputEncryptedImage=decryption.doDecryption(seedKey,randomSequenceMatrix, colorChannel,stringChannel);
-            rezultatDecriptare=outputEncryptedImage;
             addDecryptedImageInList(outputEncryptedImage);
-
         }catch(Exception e){
             e.printStackTrace();
         }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, StringException, InterruptedException {
+    public static void main(String[] args) throws IOException, StringException, InterruptedException, NoSuchAlgorithmException {
         //cheia este folosita ca si seed pentru generatorul de numere pseudoaleatoare
         //primul nr random va fi folosit drept 'd'=intial shift
         ImageOperations imageOperations=new ImageOperations();
@@ -71,12 +72,9 @@ public class Main {
         //terminare criptare
 
 
-
-
         //decriptare
 
         startTime=System.currentTimeMillis();
-        Decryption decryption=new Decryption();
         ParallelDecryption parallelDecryption=new ParallelDecryption();
         executorService= Executors.newFixedThreadPool(randomSequenceMatrixForChannel.size());
 
@@ -120,7 +118,6 @@ public class Main {
         Files.write(Paths.get("TimpRulare.txt"),("Timpul total pentru decriptare="+formatter.format((endTime-startTime)/1000d)+" secunde\n\n").getBytes(), StandardOpenOption.APPEND);
 
         //terminare decriptare
-
 
     }
 

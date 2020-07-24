@@ -1,18 +1,19 @@
 import java.awt.image.BufferedImage;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Decryption {
 
-    public List<int[][]> generateRandomSequenceForChannels(long seed, int rows, int columns){
-        int[][] redMatrixRandomSequence = new int[columns][rows];
-        int[][] greenMatrixRandomSequence = new int[columns][rows];
-        int[][] blueMatrixRandomSequence = new int[columns][rows];
-        Random random=new Random();
+    public List<int[][]> generateRandomSequenceForChannels(long seed, int rows, int columns) throws NoSuchAlgorithmException {
+        int[][] redMatrixRandomSequence = new int[rows][rows];
+        int[][] greenMatrixRandomSequence = new int[rows][rows];
+        int[][] blueMatrixRandomSequence = new int[rows][rows];
+        SecureRandom random = SecureRandom.getInstance("SHA1PRNG") ;
         random.setSeed(seed);
-        for(int i=0;i<columns;i++){
-            for(int j=0;j<rows;j++){
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<columns;j++){
                 redMatrixRandomSequence[i][j]=random.nextInt(8);
                 greenMatrixRandomSequence[i][j]=random.nextInt(8);
                 blueMatrixRandomSequence[i][j]=random.nextInt(8);
@@ -25,9 +26,9 @@ public class Decryption {
         return list2d;
     }
 
-    public BufferedImage doDecryption(long seed, int [][] matrix, BufferedImage colorChannel, String channel) throws StringException {
+    public BufferedImage doDecryption(long seed, int [][] matrix, BufferedImage colorChannel, String channel) throws StringException, NoSuchAlgorithmException {
         BufferedImage outputBufferedImage=new BufferedImage(colorChannel.getWidth(), colorChannel.getHeight(),BufferedImage.TYPE_INT_RGB);
-        Random random=new Random();
+        SecureRandom random = SecureRandom.getInstance("SHA1PRNG") ;
         random.setSeed(seed);
         int d=0;
         if(channel.equals("red")){
@@ -44,9 +45,9 @@ public class Decryption {
         }
         else throw new StringException("Invalid name for color channel.The choices are:'red','green' or 'blue'.");
         d=d%8;
-        for(int i=0;i<colorChannel.getWidth();i++){
-            for(int j=0;j<colorChannel.getHeight();j++){
-                int rgb=colorChannel.getRGB(i,j);
+        for(int i=0;i<colorChannel.getHeight()-1;i++){
+            for(int j=0;j<colorChannel.getWidth()-1;j++){
+                int rgb=colorChannel.getRGB(j,i);
                 rgb=rgb & 0x00ffffff;
                 //trebe verificat ce culoare este si apoi convertita la byte si apoi shiftata
                 byte byteRGB=0;
@@ -56,21 +57,21 @@ public class Decryption {
                     shift=circularLeftShift(byteRGB,d);
                     shift=circularLeftShift(shift, matrix[i][j]);
                     rgb=(int)shift<<16;
-                    outputBufferedImage.setRGB(i, j, rgb & 0x00ff0000);
+                    outputBufferedImage.setRGB(j, i, rgb & 0x00ff0000);
                 }
                 if((rgb & 0x0000ff00)!=0){//inseamna ca este culoarea verde
                     byteRGB=(byte)(rgb>>8);
                     shift=circularLeftShift(byteRGB,d);
                     shift=circularLeftShift(shift, matrix[i][j]);
                     rgb=(int)shift<<8;
-                    outputBufferedImage.setRGB(i, j, rgb & 0x0000ff00);
+                    outputBufferedImage.setRGB(j, i, rgb & 0x0000ff00);
                 }
                 if((rgb & 0x000000ff)!=0){//inseamna ca este culoarea albastra
                     byteRGB=(byte)rgb;
                     shift=circularLeftShift(byteRGB,d);
                     shift=circularLeftShift(shift, matrix[i][j]);
                     rgb=shift;
-                    outputBufferedImage.setRGB(i, j, rgb & 0x000000ff);
+                    outputBufferedImage.setRGB(j, i, rgb & 0x000000ff);
                 }
             }
             d++;
