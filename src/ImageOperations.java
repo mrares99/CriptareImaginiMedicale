@@ -34,7 +34,7 @@ public class ImageOperations {
                 green = rgb>>8 & 0xff;
                 blue = rgb & 0xff;
 
-                bufferedImageList.get(0).setRGB(i,j,red<<16); //red
+                bufferedImageList.get(0).setRGB(i,j,(red<<16) ); //red
                 bufferedImageList.get(1).setRGB(i,j,green<<8); //green
                 bufferedImageList.get(2).setRGB(i,j,blue); //blue
             }
@@ -46,6 +46,7 @@ public class ImageOperations {
         int width=firstImage.getWidth(),height=firstImage.getHeight();
         BufferedImage outputImage=new BufferedImage(width, height,BufferedImage.TYPE_INT_RGB);
         int color1=0,color2=0,color3=0;
+        System.out.println();
         for(int i=0;i<width;i++){
             for(int j=0;j<height;j++){
                 color1=firstImage.getRGB(i,j);

@@ -16,15 +16,16 @@ public class Main {
 
     public static void main(String[] args) throws IOException, StringException, InterruptedException, NoSuchAlgorithmException {
         //cheia este folosita ca si seed pentru generatorul de numere pseudoaleatoare
-        //primul nr random va fi folosit drept 'd'=intial shift
         ImageOperations imageOperations=new ImageOperations();
         Encryption encryption=new Encryption();
         ViewImage viewImage=new ViewImage();
-        //Flower;Flower2;Flower3;PinkFlower;Daisy;Lenna;Owl;Roses;Smoke;Umbrellas;testHeight;testWidth;testHeightScurt;testHeightScurtUmbrellas
-        BufferedImage inputBufferedImage = imageOperations.readImage(new File("D:/An4/Licenta/TestImages/Flower.png"));
+        //Flower;Flower2;Flower3;PinkFlower;Daisy;Lenna;Owl;Roses;Smoke;Umbrellas;testHeight;testWidth;testHeightScurt;testHeightScurtUmbrellas;1PixelHeight
+        //2height4width;5height10width
+        BufferedImage inputBufferedImage = imageOperations.readImage(new File("D:/An4/Licenta/TestImages/Lenna.png"));
         int width=inputBufferedImage.getWidth(), height=inputBufferedImage.getHeight();
         viewImage.displayImage(inputBufferedImage,"Original",width,height);
         Files.write(Paths.get("TimpRulare.txt"),("Width imagine="+inputBufferedImage.getWidth()+" Height imagine="+inputBufferedImage.getHeight()+"\n").getBytes(), StandardOpenOption.APPEND);
+
 
         //criptare
         long startTime=System.currentTimeMillis();
@@ -72,8 +73,10 @@ public class Main {
         //terminare criptare
 
 
-        //decriptare
 
+        //decriptare
+        Decryption decryption=new Decryption();
+        randomSequenceMatrixForChannel=decryption.generateRandomSequenceForChannels(seed, finalEncryptedImage.getHeight(),finalEncryptedImage.getWidth());
         startTime=System.currentTimeMillis();
         ParallelDecryption parallelDecryption=new ParallelDecryption();
         executorService= Executors.newFixedThreadPool(randomSequenceMatrixForChannel.size());
@@ -104,7 +107,6 @@ public class Main {
 
         executorService.execute(parallelDecryption);
 
-
         executorService.shutdown();
         executorService.awaitTermination(10,TimeUnit.MINUTES);
 
@@ -112,12 +114,13 @@ public class Main {
         BufferedImage fin= imageOperations.constructImageFromRGBChannels(outputDecryptedImageList.get(0),outputDecryptedImageList.get(1),outputDecryptedImageList.get(2));
         viewImage.displayImage(fin,"finalDecryptedImage", fin.getWidth(),fin.getHeight());
 
-
         endTime=System.currentTimeMillis();
         formatter=new DecimalFormat("#0.00000");
         Files.write(Paths.get("TimpRulare.txt"),("Timpul total pentru decriptare="+formatter.format((endTime-startTime)/1000d)+" secunde\n\n").getBytes(), StandardOpenOption.APPEND);
 
         //terminare decriptare
+
+
 
     }
 
