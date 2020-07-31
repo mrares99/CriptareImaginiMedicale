@@ -18,3 +18,72 @@ Width imagine=220 Height imagine=220
 Timpul total pentru criptare=1,75000 secunde
 Timpul total pentru decriptare=0,64100 secunde
 
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=1,54200 secunde
+Timpul total pentru decriptare=0,69200 secunde
+
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=1,64400 secunde
+Timpul total pentru decriptare=0,92600 secunde
+
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=1,86600 secunde
+Timpul total pentru decriptare=0,82800 secunde
+
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=1,68700 secunde
+Timpul total pentru decriptare=0,76000 secunde
+
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=1,72500 secunde
+Timpul total pentru decriptare=0,65200 secunde
+
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=2,14500 secunde
+Timpul total pentru decriptare=0,75300 secunde
+
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=1,75100 secunde
+Timpul total pentru decriptare=0,86600 secunde
+
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=1,79400 secunde
+Timpul total pentru decriptare=1,13600 secunde
+
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=1,59000 secunde
+Timpul total pentru decriptare=0,59800 secunde
+
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,14800 secunde
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=1,75100 secunde
+Timpul total pentru decriptare=0,69500 secunde
+
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=1,85300 secunde
+Timpul total pentru decriptare=0,77600 secunde
+
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=1,84500 secunde
+Timpul total pentru decriptare=0,93500 secunde
+

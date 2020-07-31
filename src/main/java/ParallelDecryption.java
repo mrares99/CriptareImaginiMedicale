@@ -1,8 +1,10 @@
+package main.java;
+
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParallelEncryption extends Thread{
+public class ParallelDecryption extends Thread{
 
     private long seedKey;
     private int [][] randomSequenceMatrix;
@@ -10,30 +12,30 @@ public class ParallelEncryption extends Thread{
     private String stringChannel;
     private Thread thread;
     private String threadName;
-    private Encryption encryption;
-    private static List<BufferedImage> outputEncryptedImageList;
+    private Decryption decryption;
+    private static List<BufferedImage> outputDecryptedImageList;
 
-    public ParallelEncryption(){
+    public ParallelDecryption(){
         this.thread=new Thread();
-        this.encryption=new Encryption();
-        outputEncryptedImageList=new ArrayList<BufferedImage>();
+        this.decryption=new Decryption();
+        outputDecryptedImageList=new ArrayList<BufferedImage>();
     }
 
     public void run(){
         try{
-            BufferedImage outputEncryptedImage=encryption.doEncryption(seedKey,randomSequenceMatrix, colorChannel,stringChannel);
-            addEncryptedImageInList(outputEncryptedImage);
+            BufferedImage outputEncryptedImage=decryption.doDecryption(seedKey,randomSequenceMatrix, colorChannel,stringChannel);
+            addDecryptedImageInList(outputEncryptedImage);
         }catch(Exception e){
             e.printStackTrace();
         }
     }
 
-    public  List<BufferedImage> getOutputEncryptedImageList() {
-        return outputEncryptedImageList;
+    public synchronized void addDecryptedImageInList(BufferedImage bufferedImage){
+        outputDecryptedImageList.add(bufferedImage);
     }
 
-    public synchronized void addEncryptedImageInList(BufferedImage bufferedImage){
-        outputEncryptedImageList.add(bufferedImage);
+    public  List<BufferedImage> getOutputDecryptedImageList() {
+        return outputDecryptedImageList;
     }
 
     public void setSeedKey(long seedKey) {

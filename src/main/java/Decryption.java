@@ -1,3 +1,5 @@
+package main.java;
+
 import java.awt.image.BufferedImage;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;

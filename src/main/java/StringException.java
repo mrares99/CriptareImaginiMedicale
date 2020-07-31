@@ -1,3 +1,5 @@
+package main.java;
+
 public class StringException extends Exception {
 
     private String string;

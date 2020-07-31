@@ -1,3 +1,5 @@
+package main.java;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -61,12 +63,13 @@ public class Main {
         executorService.execute(parallelEncryption);
 
         executorService.shutdown();
-        executorService.awaitTermination(10,TimeUnit.MINUTES);
+        executorService.awaitTermination(10, TimeUnit.MINUTES);
         long endTime=System.currentTimeMillis();
         NumberFormat formatter=new DecimalFormat("#0.00000");
         Files.write(Paths.get("TimpRulare.txt"),("Timpul total pentru criptare="+formatter.format((endTime-startTime)/1000d)+" secunde\n").getBytes(), StandardOpenOption.APPEND);
 
         List<BufferedImage> outputEncryptedImages=parallelEncryption.getOutputEncryptedImageList();
+
         BufferedImage finalEncryptedImage = imageOperations.constructImageFromRGBChannels(outputEncryptedImages.get(0), outputEncryptedImages.get(1),outputEncryptedImages.get(2));
         viewImage.displayImage(finalEncryptedImage,"finalEncryptedImage", finalEncryptedImage.getWidth(),finalEncryptedImage.getHeight());
 
@@ -119,6 +122,8 @@ public class Main {
         Files.write(Paths.get("TimpRulare.txt"),("Timpul total pentru decriptare="+formatter.format((endTime-startTime)/1000d)+" secunde\n\n").getBytes(), StandardOpenOption.APPEND);
 
         //terminare decriptare
+
+
 
 
 
