@@ -23,8 +23,9 @@ public class ParallelEncryption extends Thread{
 
     public void run(){
         try{
-            BufferedImage outputEncryptedImage=encryption.doEncryption(seedKey,randomSequenceMatrix, colorChannel,stringChannel);
-            addEncryptedImageInList(outputEncryptedImage);
+            //BufferedImage outputEncryptedImage=encryption.doEncryption(seedKey,randomSequenceMatrix, colorChannel,stringChannel);
+            //addEncryptedImageInList(outputEncryptedImage);
+            addEncryptedImageInList(encryption.doEncryption(seedKey,randomSequenceMatrix, colorChannel,stringChannel));
         }catch(Exception e){
             e.printStackTrace();
         }

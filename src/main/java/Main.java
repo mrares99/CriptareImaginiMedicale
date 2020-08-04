@@ -1,5 +1,9 @@
 package main.java;
 
+import ij.ImagePlus;
+import ij.ImageStack;
+
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +13,7 @@ import java.nio.file.StandardOpenOption;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -124,9 +129,11 @@ public class Main {
         //terminare decriptare
 
 
-
-
-
+//        ImagePlus imagePlus=new ImagePlus("D:/An4/Licenta/TestImages/Lenna.png");
+//        ImageStack imageStack=imagePlus.getStack();
+//
+//        ImagePlus test=new ImagePlus("salut",imageStack);
+//        viewImage.displayImage(test,"salut",test.getWidth(),test.getHeight());
     }
 
 }
